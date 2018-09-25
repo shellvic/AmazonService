@@ -1,2 +1,2 @@
 # AmazonService
-# AmazonService
+# MavenProject
