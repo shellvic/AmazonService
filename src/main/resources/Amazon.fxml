@@ -102,8 +102,8 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #bf6318;">
                             <children>
-                                <Text layoutX="41.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="0.0" />
-                                <TextField fx:id="fieldAddToCartLogin" layoutX="65.0" layoutY="24.0" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #d6d6d6; -fx-background-radius: 10;" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+                                <Text layoutX="41.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="0.0" />
+                                <TextField fx:id="fieldAddToCartEmail" layoutX="65.0" layoutY="24.0" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #d6d6d6; -fx-background-radius: 10;" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
                                     <effect>
                                         <InnerShadow />
                                     </effect></TextField>
@@ -121,7 +121,7 @@
                                     <effect>
                                         <DropShadow />
                                     </effect></Button>
-                        <Label fx:id="labelAddProdLogin" prefHeight="17.0" prefWidth="90.0" textFill="#fdff11" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0" />
+                        <Label fx:id="labelAddProdEmail" prefHeight="17.0" prefWidth="90.0" textFill="#fdff11" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0" />
                         <Label fx:id="labelAddProdPassword" prefHeight="17.0" prefWidth="90.0" textFill="#fdff11" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0" />
                         <Label fx:id="labelAddProdProduct" prefHeight="17.0" prefWidth="90.0" textFill="#fdff11" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
                             </children>

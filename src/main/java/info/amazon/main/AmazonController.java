@@ -29,7 +29,7 @@ public class AmazonController {
 	@FXML
 	private Button buttonRegNewUser;
 	@FXML
-	private TextField fieldAddToCartLogin;
+	private TextField fieldAddToCartEmail;
 	@FXML
 	private TextField fieldAddToCartPassword;
 	@FXML
@@ -45,7 +45,7 @@ public class AmazonController {
 	@FXML
 	private Label labelRegPassword;
 	@FXML
-	private Label labelAddProdLogin;
+	private Label labelAddProdEmail;
 	@FXML
 	private Label labelAddProdPassword;
 	@FXML
@@ -76,9 +76,9 @@ public class AmazonController {
 			}
 		});
 
-		fieldAddToCartLogin.focusedProperty().addListener((v, w, n) -> {
+		fieldAddToCartEmail.focusedProperty().addListener((v, w, n) -> {
 			if (n) {
-				labelAddProdLogin.setText("");
+				labelAddProdEmail.setText("");
 			}
 		});
 
@@ -105,7 +105,7 @@ public class AmazonController {
 			runTask(() -> amazonService.findProductByASIN(line), buttonFindProductBy);
 		} else {
 			labelFindProduct.setText("Invaild data");
-		}		
+		}
 	}
 
 	@FXML
@@ -135,22 +135,26 @@ public class AmazonController {
 
 	@FXML
 	public void addProductToCart() {
-		if (!checkFirstName(fieldAddToCartLogin.getText())) {
-			labelAddProdLogin.setText("Inalid name");
+		String email = fieldAddToCartEmail.getText();
+		String password = fieldAddToCartPassword.getText();
+		String product = fieldAddToCartProduct.getText();
+		
+		if (!checkEmail(email)) {
+			labelAddProdEmail.setText("Inalid email");
 			return;
 		}
-		if (!checkEmail(fieldAddToCartPassword.getText())) {
-			labelAddProdPassword.setText("Inalid email");
+		if (!checkPassword(password)) {
+			labelAddProdPassword.setText("Inalid password");
 			return;
 		}
-		if (!checkPassword(fieldAddToCartProduct.getText())) {
-			labelRegPassword.setText("Inalid password");
+		if (!checkProduct(product)) {
+			labelAddProdProduct.setText("Inalid product");
 			return;
 		}
 
 		runTask(() -> {
-			user = new User(fieldAddToCartLogin.getText(), "default", fieldAddToCartPassword.getText());
-			amazonService.addProductToCart(user, fieldAddToCartProduct.getText());
+			user = new User(email, password);
+			amazonService.addProductToCart(user, product);
 		}, buttonAddToCart);
 	}
 

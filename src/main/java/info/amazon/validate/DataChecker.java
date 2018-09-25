@@ -25,4 +25,8 @@ public class DataChecker {
 	public static boolean checkASIN(String asin) {
 		return asin.matches("^[A-Z0-9]{10}$");
 	}
+	
+	public static boolean checkProduct(String product) {
+		return (checkURL(product) || checkASIN(product));
+	}
 }
