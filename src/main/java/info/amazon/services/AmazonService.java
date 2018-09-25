@@ -1,8 +1,5 @@
 package info.amazon.services;
 
-import static info.amazon.validate.DataChecker.checkASIN;
-import static info.amazon.validate.DataChecker.checkURL;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,8 +23,20 @@ public class AmazonService {
 		}
 	}
 
+	public void findProductByURL(String url) {
+		getDriver().get(url);
+	}
+	
+	public void findProductByASIN(String asin) {
+		getDriver().get(baseUrl);
+		WebElement element = getDriver().findElement(By.cssSelector("#twotabsearchtextbox"));
+		element.click();
+		element.sendKeys(asin);
+		element.submit();
+	}
+
 	public void regNewUser(User user) {
-		
+
 		WebDriver driver = getDriver();
 		driver.get(baseUrl);
 		driver.findElement(By.cssSelector("#nav-link-accountList.nav-a.nav-a-2")).click();
@@ -41,23 +50,8 @@ public class AmazonService {
 	}
 
 	public void addProductToCart(User user, String product) {
-		
 		WebDriver driver = getDriver();
-
 		driver.get(baseUrl);
-
-	}
-
-	public void findProductByURL(String url) {
-		getDriver().get(url);
-	}
-
-	public void findProductByASIN(String asin) {
-		getDriver().get(baseUrl);
-		WebElement element = getDriver().findElement(By.cssSelector("#twotabsearchtextbox"));
-		element.click();
-		element.sendKeys(asin);
-		element.submit();
 	}
 
 	private void initDriver() {

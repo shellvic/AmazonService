@@ -103,9 +103,9 @@ public class AmazonController {
 			runTask(() -> amazonService.findProductByURL(line), buttonFindProductBy);			
 		} else if (checkASIN(line)) {
 			runTask(() -> amazonService.findProductByASIN(line), buttonFindProductBy);
-		}
-
-		labelFindProduct.setText("Invaild data");
+		} else {
+			labelFindProduct.setText("Invaild data");
+		}		
 	}
 
 	@FXML
