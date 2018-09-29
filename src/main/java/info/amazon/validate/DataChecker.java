@@ -15,7 +15,7 @@ public class DataChecker {
 	}
 	
 	public static boolean checkPassword(String password) {
-		return password.matches("^[A-Za-z]{6,}$");
+		return password.matches("^\\w{6,}$");
 	}
 
 	public static boolean checkURL(String url) {

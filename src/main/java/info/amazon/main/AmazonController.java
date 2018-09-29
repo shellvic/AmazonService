@@ -113,20 +113,24 @@ public class AmazonController {
 		String name = fieldRegUserName.getText();
 		String email = fieldRegUserEmail.getText();
 		String password = fieldRegUserPassword.getText();
+		labelRegUserName.setText("");
 		
+		if (!amazonService.checkSignIn()) {
+			labelRegUserName.setText("Log off first!");
+			return;
+		}
 		if (!checkFirstName(name)) {
-			labelRegUserName.setText("Inalid name");
+			labelRegUserName.setText("Invalid name");
 			return;
 		}
 		if (!checkEmail(email)) {
-			labelRegEmail.setText("Inalid email");
+			labelRegEmail.setText("Invalid email");
 			return;
 		}
 		if (!checkPassword(password)) {
-			labelRegPassword.setText("Inalid password");
+			labelRegPassword.setText("Invalid password");
 			return;
 		}
-		
 		runTask(() -> {
 			user = new User(name, email, password);
 			amazonService.regNewUser(user);
@@ -140,22 +144,25 @@ public class AmazonController {
 		String product = fieldAddToCartProduct.getText();
 		
 		if (!checkEmail(email)) {
-			labelAddProdEmail.setText("Inalid email");
+			labelAddProdEmail.setText("Invalid email");
 			return;
 		}
 		if (!checkPassword(password)) {
-			labelAddProdPassword.setText("Inalid password");
+			labelAddProdPassword.setText("Invalid password");
 			return;
 		}
 		if (!checkProduct(product)) {
-			labelAddProdProduct.setText("Inalid product");
+			labelAddProdProduct.setText("Invalid product");
 			return;
 		}
-
-		runTask(() -> {
-			user = new User(email, password);
-			amazonService.addProductToCart(user, product);
-		}, buttonAddToCart);
+		User user = new User(email, password);
+		if (checkURL(product)) {
+			runTask(() -> amazonService.addProductToCartByURL(user, product), buttonAddToCart);			
+		} else if (checkASIN(product)) {
+			runTask(() -> amazonService.addProductToCartByASIN(user, product), buttonAddToCart);
+		} else {
+			labelAddProdProduct.setText("Invalid product");
+		}
 	}
 
 	public void destroy() {
